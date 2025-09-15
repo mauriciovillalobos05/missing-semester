@@ -1,4 +1,4 @@
-# 739. Daily Temperatures
+# [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
 
 ### Naive Solution
 
@@ -22,4 +22,4 @@ greater element:
   the right.
 
 The complexity is $O(n)$, because we iterate over the elements once, and each
-element is pushed and poppe once.
+element is pushed and popped once.

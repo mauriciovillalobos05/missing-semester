@@ -1,4 +1,4 @@
-# 829. Consecutive Numbers Sum
+# [829. Consecutive Numbers Sum](https://leetcode.com/problems/consecutive-numbers-sum/)
 
 ### Naive Solution
 
@@ -11,12 +11,12 @@ input size.
 An optimization would be to use a sliding window algorithm which can optimize
 the search complexity down to $O(n)$, by comparing the sum of a dynamic window
 increasing to the right when $sum < n$ and decreasing froom the left when $sum >
-n$, finally we would only need to count every ocurrence of $sum = n$. This
+n$, finally we would only need to count every occurrence of $sum = n$. This
 approach it's still far from optimal as $n$ a is very large number.
 
-### Sum Decomposition (sol1)
+### Sum Decomposition (sol 1)
 
-In order to optimze the solution we need to analize it mathematically, notice
+In order to optimize the solution we need to analyze it mathematically, notice
 that the sum of consecutive numbers has a closed form which derives from the
 gaussian sum.
 
@@ -47,11 +47,31 @@ We can find all solutions by iterating from one up to when
 $\frac{m^2+m}{2} \le n$ (obtained by setting $a=1$). This approach optimizes the
 solution down to $O(\sqrt{n})$, but we can do even better.
 
-### Odd Factors of $n$
+### Odd Factors of $n$ (sol 2)
 
 Notice that from the derived expression $m(m+2a-1)=2n$ we can deduce that either
 $m$ or $m+2a-1$ must be odd, they cannot be even at the same time as
 $2(\frac{m}{2}+a)-1$ is odd.
 
-This means that there are as valid sums as there are odd factors of $n$, we just
-have to count them.
+This means that there are as many valid sums as there are odd factors of $n$, we
+just have to count them. The algorithm for computing this is described as
+follows.
+
+First we discard every even factor, by succesivly halving the $n$ until its odd,
+which is a logarithmic operation.
+
+Then we iterate through every odd number until $\sqrt{n}$ (this is for
+simplicity, as we could've also factorize $n$ which has the same time
+complexity), finding every odd factor in the process, and optimizing the search
+by dividing by a factor every time it's found, which greatly reduces the search
+space for most numbers.
+
+Whenever we find a factor of $n$ we multiply the count of factors by it's
+occurrences, as every possibility of factoring $n$ either contains the newly
+found factor, or not.
+
+The algorithm still has $O(\sqrt{n})$ in the cases of specially hard to factor
+numbers, such as perfect squares, as it has to iterate until it finds the factor
+$\sqrt{n}$, but by taking advantage of factorization, most commonly occurring
+numbers will be reduced logarithmically, which yields better runtimes than the
+previous one.
