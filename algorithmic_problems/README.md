@@ -6,7 +6,7 @@ arranged according to each platform’s indexing. Furthermore, each platform has
 an `INDEX.md`, which contain problem sets grouped by categories or roadmaps,
 which lists problems grouped by categories or roadmaps.
 
-See the general [index](INDEX.md) for problem sets from multiple platforms.
+See the general [index](./INDEX.md) for problem sets from multiple platforms.
 
 ## Platforms
 
@@ -22,7 +22,7 @@ Technical interview preparation.
 - [HackerRank](https://www.hackerrank.com/)
 - [Codewars](https://www.codewars.com)
 
-Math oriented.
+Math focused.
 
 - [Project Euler](https://projecteuler.net/)
 
@@ -31,16 +31,30 @@ Math oriented.
 To maintain consistency and clarity, please follow these guidelines for
 uploading problems:
 
-1. **Solutions**
+> Tip: Read through some existing editorials to check and validate your own.
+
+1. **Solution Code**
    - Each problem must include one or more proposed solutions.
-   - The source code must be exactly what would be submitted to the platform.
-   - Make sure to sort the sources, read the
+   - Make sure to format the sources, read the
      [contributing](../CONTRIBUTING.md#devtools) on this.
+   - Ignore redundant and unnecessary lines of code, like setup and cleanup code
+     performed which is handled by the platform itself (e.g, imports in leetcode
+     or IO in HackerRank), type annotations in loosely typed languages like
+     Python, etc. This helps to avoid cluttering the solutions, and focusing on
+     the relevant algorithmic code.
 
 2. **Editorial**
+
    - Each problem must include an `editorial.md` file explaining each proposed
      solution.
-   - The editorial should describe how the solution is derived and why it works.
+   - The title of the editorial must be a link to the problem, using the
+     markdown syntax `[ProblemID](URL)`.
+   - The editorial should describe how to derive the solution, why it's correct
+     and the asymptotic complexity analysis. This is required for every
+     solution/approach in separate sections, specify which one by adding
+     `(sol x)` to the section name, additional support sections may be added.
+   - Every mathematical notation, including the asymptotic analysis, must be
+     typesetted using latex snippets like `$O(n^2)$` (which renders $O(n^2)$).
 
 3. **Directory structure**
    - All files for a problem must be placed in a directory named after the
